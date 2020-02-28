@@ -1,0 +1,34 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item (click)="employee()">{{ humanMenu01 }}</a>
+      <a mat-list-item (click)="material()">{{ humanMenu02 }}</a>
+      <a mat-list-item (click)="accounting()">{{ humanMenu03 }}</a>
+      <a mat-list-item (click)="production()">{{ humanMenu04 }}</a>
+      <a mat-list-item (click)="member()">{{ humanMenu05 }}</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>{{ appTitle }}</span>
+      <div class="buttonGroup">
+        <span><a mat-raised-button (click)="main()">{{ humanButton01 }}</a></span>
+        <span><a mat-raised-button (click)="login()">{{ humanButton02 }}</a></span>
+        <span><a mat-raised-button (click)="logout()">{{ humanButton03 }}</a></span>
+      </div>
+    </mat-toolbar>
+    <app-main-human></app-main-human>
+  </mat-sidenav-content>
+</mat-sidenav-container>
